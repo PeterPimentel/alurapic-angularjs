@@ -1,24 +1,24 @@
-angular.module('projeto', 
-    ['ngResource','ngRoute', 'ngAnimate', 'ngCookies', 'Picture', 'Panel', 'FotoService'])
-    .config(function($routeProvider, $locationProvider) {
+// Modulo principal da aplicação
+// Nome usando no ng-app
+angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute'])
+.config(function($routeProvider, $locationProvider){
 
-        $locationProvider.html5Mode(true);
+    //Desabilita a necessida de usar o # nas rotas usando a history API
+    //O backend precisa estar preparado para atender essa demanda
+    //No index também precisa ser importado um arquivo
+    $locationProvider.html5Mode(true)
 
-        $routeProvider.when('/fotos', {
-            templateUrl: 'partials/principal.html',
-            controller: 'PrincipalController'
-        });
+    // Rota /#/fotos
+    $routeProvider.when('/fotos',{
+        templateUrl:'partials/principal.html',
+        controller: 'FotosController'
+    })
 
-        $routeProvider.when('/fotos/new', {
-            templateUrl: 'partials/foto.html',
-            controller: 'FotoController'
-        });
+    // /#/fotos/new
+    $routeProvider.when('/fotos/new',{
+        templateUrl:'partials/foto.html'
+    })
 
-        $routeProvider.when('/fotos/edit/:fotoId', {
-            templateUrl: 'partials/foto.html',
-            controller: 'FotoController'
-        });
-
-        $routeProvider.otherwise({redirectTo: '/fotos'});
-
-    });
+    //Caso a rota não bata com nenhuma das opções
+    $routeProvider.otherwise({ redirectTo:'/fotos'})
+})
