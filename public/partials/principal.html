@@ -4,9 +4,14 @@
 <div class="row">
     <div class="col-md-12">
         <form>
-            <!-- ng-model equivalente ao 2 way data binding -->
-            <!-- Caso a propiedade não tenha sido criada no scope o Angular cria por você -->
-            <input ng-model="filtro" ng-model-options="{debounce:500}" class="form-control" placeholder="Filtrar" />
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="fotos/new" class="btn btn-primary">Nova foto</a>
+                </span>
+                <!-- ng-model equivalente ao 2 way data binding -->
+                <!-- Caso a propiedade não tenha sido criada no scope o Angular cria por você -->
+                <input ng-model="filtro" ng-model-options="{debounce:500}" class="form-control" placeholder="Filtrar" />
+            </div>
         </form>
     </div>
 </div>
@@ -15,6 +20,6 @@
     <!-- Usando o pipe eu consigo dizer que ele deve usar um filter e passar em qual valor esse
         filtro será baseado -->
     <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
-        <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
+        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
     </meu-painel>
 </div>

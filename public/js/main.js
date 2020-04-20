@@ -16,7 +16,8 @@ angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute'])
 
     // /#/fotos/new
     $routeProvider.when('/fotos/new',{
-        templateUrl:'partials/foto.html'
+        templateUrl:'partials/foto.html',
+        controller: 'fotoController'
     })
 
     //Caso a rota não bata com nenhuma das opções

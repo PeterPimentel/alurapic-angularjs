@@ -19,4 +19,15 @@ angular.module('minhasDiretivas',[])
     }
 
     return ddo
+}).directive('minhaFoto',function(){
+    const ddo = {
+        restric:"AE",
+        scope:{
+            titulo:'@',
+            url:'@'
+        },
+        templateUrl:'js/directives/minha-foto.html'
+    }
+
+    return ddo
 })

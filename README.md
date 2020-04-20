@@ -1,3 +1,4 @@
+<p align="center"><img  width="150" src="/docs/assets/angular_logo.png"/></p>
 <h1 align="center">Alura Pic</h1>
 
 <p align="center">Aplicação criada com o auxílio do curso de AngularJs do Alura</p>
