@@ -37,6 +37,28 @@
             </textarea>
         </div>
 
+        <!-- Primeiro ele verificar no controller passado no elemento -->
+        <!-- Caso o scope não tenha aquele valor -->
+        <!-- fornecido ele sobe para o controller pai ex: FotoController -->
+        <div class="form-group">
+            <label>Grupo</label>
+            <select name="grupo" class="form-controle"
+            ng-controller="GruposController"
+            ng-model="foto.grupo"
+            ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+            <!-- ng-optiosn facilita a criação das options
+            grupo._id é o valor dele
+            as grupo.nome - Como esse valor será exibido para o usuário
+            como vai ser chamado o elemento - grupo
+            Sobre quem estamos interando - grupos 
+            | uppercase - filtro para deixar em caixa alta-->
+                <option value="">Selecione o grupo</option>
+            </select>
+            <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
+                Grupo obrigatório
+            </span>
+        </div>
+
         <button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">
             Salvar
         </button>

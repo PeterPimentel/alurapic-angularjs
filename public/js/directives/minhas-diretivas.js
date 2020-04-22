@@ -30,4 +30,16 @@ angular.module('minhasDiretivas',[])
     }
 
     return ddo
+}).directive('meuBotaoPerigo',function(){
+    const ddo = {
+        restric:"E",
+        scope:{
+            nome:'@', //Passado como string
+            acao:'&' //Significa que estou passando uma expressão
+            //Essa expressão será avaliada no contexto/scope do controller chamado 
+        },
+        template:'<button ng-click="acao(data)" class="btn btn-danger btn-block">{{nome}}</button>'
+    }
+
+    return ddo
 })

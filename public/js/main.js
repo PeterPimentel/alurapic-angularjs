@@ -1,5 +1,6 @@
 // Modulo principal da aplicação
 // Nome usando no ng-app
+//Necessário importar os scrips [ngAnimate, ngRoute] Relizar animações / Controle de rotas
 angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute'])
 .config(function($routeProvider, $locationProvider){
 
@@ -16,6 +17,11 @@ angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute'])
 
     // /#/fotos/new
     $routeProvider.when('/fotos/new',{
+        templateUrl:'partials/foto.html',
+        controller: 'fotoController'
+    })
+
+    $routeProvider.when('/fotos/edit/:fotoId',{
         templateUrl:'partials/foto.html',
         controller: 'fotoController'
     })
