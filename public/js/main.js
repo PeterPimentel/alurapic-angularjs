@@ -1,7 +1,7 @@
 // Modulo principal da aplicação
 // Nome usando no ng-app
 //Necessário importar os scrips [ngAnimate, ngRoute] Relizar animações / Controle de rotas
-angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute'])
+angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute', 'meusServicos'])
 .config(function($routeProvider, $locationProvider){
 
     //Desabilita a necessida de usar o # nas rotas usando a history API
