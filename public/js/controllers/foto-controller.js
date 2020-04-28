@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('fotoController', function($scope, $routeParams, recursoFoto){
+angular.module('alurapic').controller('fotoController', function($scope, $routeParams, recursoFoto, cadastroDeFotos){
     $scope.foto = {}
     $scope.mensagem = ''
 
@@ -15,22 +15,14 @@ angular.module('alurapic').controller('fotoController', function($scope, $routeP
         //Verifica se o formulario está valuido
         // Usar o name do formulario
         if($scope.formulario.$valid){
-            if($scope.foto._id){
-                recursoFoto.update({fotoId:$scope.foto._id}, $scope.foto, function(){
-                    $scope.mensagem = "Foto atualizada com sucesso."
-                }, function(err){
-                    $scope.mensagem = "Não foi possível atualizar a foto."
-                    console.log(err)
-                })
-            }else{
-                recursoFoto.save($scope.foto, function(){
-                    $scope.mensagem = "Foto cadastrada com sucesso."
-                    $scope.foto={}
-                },function(err){
-                    $scope.mensagem = "Não foi possível incluir a foto."
-                    console.log(err)
-                })
-            }
+            cadastroDeFotos.cadastrar($scope.foto).then(function(dados){
+                $scope.mensagem = dados.mensagem
+                if(dados.inclusao){
+                    $scope.foto = {}
+                }
+            }).catch(function(dados){
+                $scope.mensagem = dados.mensagem
+            })
         }
     }
 })
