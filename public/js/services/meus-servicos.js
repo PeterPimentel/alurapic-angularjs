@@ -13,8 +13,8 @@ angular.module('meusServicos', ['ngResource'])
         return $resource('v1/fotos/:fotoId', null, { //fotoId é o parametrô que será passado nas requisições
             update: { method: 'PUT' }
         })
-    })
-    .factory('cadastroDeFotos', function (recursoFoto, $q) { //recurso foto é o serviço acima
+    })//rootScope - scope raiz de toda a aplicação
+    .factory('cadastroDeFotos', function (recursoFoto, $q, $rootScope) { //recurso foto é o serviço acima
         //$q é um recurso no angular que permite a criação de promises
 
         const servico = {}
@@ -22,6 +22,7 @@ angular.module('meusServicos', ['ngResource'])
             return $q(function (resolve, reject) { // retorna uma promise
                 if (foto._id) {
                     recursoFoto.update({ fotoId: foto._id }, foto, function () {
+                        $rootScope.$broadcast('fotoCadastrada')
                         resolve({
                             mensagem: `foto ${foto.titulo} atualizado com sucesso!`,
                             inclusao: false
@@ -34,6 +35,7 @@ angular.module('meusServicos', ['ngResource'])
                     })
                 } else {
                     recursoFoto.save(foto, function () {
+                        $rootScope.$broadcast('fotoCadastrada')
                         resolve({
                             mensagem: `foto ${foto.titulo} incluída com sucesso!`,
                             inclusao: true

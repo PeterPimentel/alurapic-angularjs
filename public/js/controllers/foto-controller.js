@@ -20,6 +20,13 @@ angular.module('alurapic').controller('fotoController', function($scope, $routeP
                 if(dados.inclusao){
                     $scope.foto = {}
                 }
+                /**
+                 * Versão utilizando o watch / ver diretivas
+                 * $scope.focado = true
+                */
+
+                //versão usando broadcast ver serviços
+
             }).catch(function(dados){
                 $scope.mensagem = dados.mensagem
             })
